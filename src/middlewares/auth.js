@@ -8,10 +8,7 @@ const userAuth = async (req, res, next) => {
         if(!token){
             throw new Error("No token provided");
         }
-
-        const privatekey = "AuthLabs@21#2006";
-
-        const decodedToken = await jwt.verify(token, privatekey);
+        const decodedToken = await jwt.verify(token,  process.env.JWT_SECRET);
         const { _id } = decodedToken;
 
         const user = await User.findById(_id);
