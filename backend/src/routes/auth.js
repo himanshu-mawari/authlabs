@@ -2,7 +2,6 @@ import express from "express";
 import User from "../models/user.js";
 import { validateSignupInput } from "../helpers/validation.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
 
 const authRouter = express.Router();
 
@@ -50,7 +49,8 @@ authRouter.post("/login", async (req, res) => {
             const token = await user.getJWT()
             res.cookie("token", token, { expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) });
             res.json({
-                message: "Login successfully. Welcome back!"
+                message: "Login successfully. Welcome back!",
+                data:user
             })
         }
 
