@@ -15,10 +15,9 @@ const LoginForm = () => {
         const res = await axios.post(BASE_URL + "/api/auth/login" , {email , password} , {withCredentials:true});
         setUserDetail(res?.data?.data);
         navigate("/app")
-
   }
   return (
-    <div className="flex justify-center mt-20 ">
+    <div className="flex justify-center mt-28 ">
       <div className="card bg-base-100 w-96 shadow-2xl ">
         <div className="text-center pt-10 ">
           <span className="text-4xl  w-80 text-left pb-3  inline-block border-b-2 border-slate-500 font-login">
